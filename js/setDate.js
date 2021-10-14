@@ -10,7 +10,7 @@ function setDate(date) {
     timeZone: 'UTC', // В данном задании указывать таймзону нет необходимости, но в будущем возможно вам захочется создать приложение, отображающее время для разных точек планеты или сравнивающее время в разных странах.
   };
 
-  const lang = EN;
+  const lang = DATE_EN;
 
   const currentDate = date.toLocaleDateString(lang, options);
   // console.log(currentDate); // "Wednesday, October 13, 2021"
