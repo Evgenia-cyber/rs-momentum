@@ -26,7 +26,6 @@ async function getWeather() {
   const res = await fetch(url);
 
   const data = await res.json();
-  console.log(data.cod);
 
   weatherIcon.className = 'weather-icon owf'; // Этой строкой мы удаляем все лишние классы перед добавлением нового, чтобы иконка погоды обновлялась корректно.
 
@@ -49,7 +48,6 @@ async function getWeather() {
 
 /* ******************* */
 function changeCityHandler() {
-  console.log(cityInput.value);
   getWeather();
 }
 

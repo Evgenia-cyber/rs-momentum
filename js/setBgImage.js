@@ -3,11 +3,8 @@ const slidePrevBtn = document.querySelector('.slide-prev');
 /* ***************** */
 let randomNum;
 
-function getRandomNum() {
-  randomNum =
-    Math.floor(
-      Math.random() * (MAX_NUMBER_OF_IMAGE - MIN_NUMBER_OF_IMAGE + 1),
-    ) + MIN_NUMBER_OF_IMAGE; // Получение случайного целого числа в заданном интервале, включительно. Максимум и минимум включаются
+function getRandomNumberOfImage() {
+  randomNum = getRandomNum(MIN_NUMBER_OF_IMAGE, MAX_NUMBER_OF_IMAGE);
 }
 
 function setBg() {
@@ -15,7 +12,7 @@ function setBg() {
   // После установки фонового изображения через js желательно отключить фоновое изображение в css-стилях, иначе при загрузке страницы сначала будет появляться фон, указанный в css, а сразу за ним фон, указанный через js.
   const date = new Date();
   const timeOfDay = getTimeOfDay(date);
-  getRandomNum();
+  getRandomNumberOfImage();
   const bgNumString = randomNum
     .toString()
     .padStart(COUNT_OF_NUMBERS_IN_BG_NUM, '0');
