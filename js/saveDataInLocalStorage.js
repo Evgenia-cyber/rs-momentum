@@ -1,13 +1,18 @@
-const usernameEl = document.querySelector('.name');
+const usernameInput = document.querySelector('.name');
 
 /* ************* */
 function setUsernameLocalStorage() {
-  localStorage.setItem('name', usernameEl.value);
+  localStorage.setItem('name', usernameInput.value);
+  localStorage.setItem('city', cityInput.value);
 }
 
 function getUsernameLocalStorage() {
   if (localStorage.getItem('name')) {
-    usernameEl.value = localStorage.getItem('name');
+    usernameInput.value = localStorage.getItem('name');
+  }
+  if (localStorage.getItem('city')) {
+    cityInput.value = localStorage.getItem('city');
+    // getWeather();
   }
 }
 
