@@ -13,9 +13,15 @@ async function getQuote() {
   const data = await res.json();
   // console.log(data);
 
-  const randomQuoteIndex = getRandomNum(0, data.length - 1);
+  const quote = quoteTextEl.textContent;
 
-  const randomQuote = data[randomQuoteIndex];
+  let randomQuote;
+
+  do {
+    const randomQuoteIndex = getRandomNum(0, data.length - 1);
+
+    randomQuote = data[randomQuoteIndex];
+  } while (quote === randomQuote.text.en || quote === randomQuote.text.en);
 
   quoteTextEl.textContent = randomQuote.text.en;
   quoteAuthorEl.textContent = randomQuote.author.en;
