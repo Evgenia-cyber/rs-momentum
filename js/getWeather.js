@@ -19,6 +19,14 @@ const cityInput = document.querySelector('.city');
 const weatherErrorEl = document.querySelector('.weather-error');
 
 /* ******************* */
+function resetWeatherValue() {
+  temperatureEl.textContent = '';
+  weatherDescriptionEl.textContent = '';
+  windEl.textContent = '';
+  humidityEl.textContent = '';
+  weatherIcon.className = 'weather-icon owf'; // Этой строкой мы удаляем все лишние классы перед добавлением нового, чтобы иконка погоды обновлялась корректно.
+}
+
 async function getWeather() {
   // Функция getWeather() не большая, не сложная. Единственное её неудобство - все полученные данные доступны исключительно внутри самой функции, получить их в основном коде невозможно. Асинхронные функции связаны с получением ответа от сервера и выполняются после того, как отработал весь код приложения. Это необходимо для того, чтобы весь код приложения не ждал пока асинхронная функция вернёт или не вернёт результат.
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&lang=en&appid=${API_KEY_WEATHER}&units=metric`;
@@ -27,9 +35,9 @@ async function getWeather() {
 
   const data = await res.json();
 
-  weatherIcon.className = 'weather-icon owf'; // Этой строкой мы удаляем все лишние классы перед добавлением нового, чтобы иконка погоды обновлялась корректно.
-
   if (data.cod === 200) {
+    weatherIcon.className = 'weather-icon owf'; // Этой строкой мы удаляем все лишние классы перед добавлением нового, чтобы иконка погоды обновлялась корректно.
+
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
 
     weatherErrorEl.textContent = '';
@@ -39,16 +47,18 @@ async function getWeather() {
     humidityEl.textContent = `Humidity: ${data.main.temp}%`;
   } else {
     weatherErrorEl.textContent = `Error: ${data.message}`;
-    temperatureEl.textContent = '';
-    weatherDescriptionEl.textContent = '';
-    windEl.textContent = '';
-    humidityEl.textContent = '';
+    resetWeatherValue();
   }
 }
 
 /* ******************* */
 function changeCityHandler() {
-  getWeather();
+  if (cityInput.value === '') {
+    weatherErrorEl.textContent = `Error: enter city`;
+    resetWeatherValue();
+  } else {
+    getWeather();
+  }
 }
 
 /* ******************* */
