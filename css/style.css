@@ -53,11 +53,15 @@ body {
 }
 
 /* ****** player ******* */
+.player {
+  padding-top: 15px;
+}
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
+  opacity: var(--basic-opacity);
+  width: 610px;
   margin-bottom: 28px;
 }
 
@@ -157,6 +161,65 @@ body {
 
 .play-next {
   background-image: url('../assets/svg/play-next.svg');
+}
+
+.volume {
+  background-image: url('../assets/svg/volume.svg');
+}
+
+.mute {
+  background-image: url('../assets/svg/mute.svg');
+}
+
+.progress {
+  background: linear-gradient(
+    to right,
+    var(--active-color) 0%,
+    var(--active-color) 0%,
+    var(--white) 0%,
+    var(--white) 100%
+  );
+  height: 4px;
+  width: 200px;
+  border-radius: 5px;
+  outline: none;
+  transition: all 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+.progress-volume {
+  width: 100px;
+  background: linear-gradient(
+    to right,
+    var(--active-color) 0%,
+    var(--active-color) 50%,
+    var(--white) 50%,
+    var(--white) 100%
+  );
+}
+
+.progress::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: var(--white);
+}
+
+.player-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.current-song-wrapper {
+  position: relative;
+}
+
+.current-song {
+  position: absolute;
+  top: -20px;
 }
 
 /* ****** weather ******* */

@@ -3,7 +3,7 @@ const playList = [
   {
     title: { en: 'Aqua Caelestis', ru: 'Небесная вода' },
     src: '../assets/sounds/Aqua Caelestis.mp3',
-    duration: '00:58',
+    duration: '00:39',
   },
   {
     title: { en: 'River Flows In You', ru: 'Река течет в тебе' },
@@ -13,7 +13,7 @@ const playList = [
   {
     title: { en: 'Summer Wind', ru: 'Летний ветер' },
     src: '../assets/sounds/Summer Wind.mp3',
-    duration: '03:50',
+    duration: '01:50',
   },
   {
     title: { en: 'Ennio Morricone', ru: 'Эннио Морриконе' },

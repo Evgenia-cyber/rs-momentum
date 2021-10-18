@@ -14,9 +14,38 @@
       <!-- player -->
       <div class="player">
         <div class="player-controls">
-          <button class="play-prev player-icon"></button>
-          <button class="play player-icon"></button>
-          <button class="play-next player-icon"></button>
+          <div class="player-control">
+            <button class="play-prev player-icon"></button>
+            <button class="play player-icon"></button>
+            <button class="play-next player-icon"></button>
+          </div>
+          <div class="current-song-wrapper">
+            <p class="current-song"></p>
+            <div class="player-control">
+              <input
+                class="progress progress-audio"
+                type="range"
+                value="0"
+                min="0"
+                max="100"
+                step="1"
+              />
+              <span class="timer-current-time">0:00</span> /
+              <span class="timer-duration-time">0:00</span>
+            </div>
+          </div>
+
+          <div class="player-control">
+            <button class="volume player-icon"></button>
+            <input
+              class="progress progress-volume"
+              type="range"
+              value="50"
+              min="0"
+              max="100"
+              step="1"
+            />
+          </div>
         </div>
         <ul class="play-list"></ul>
       </div>
