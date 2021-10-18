@@ -67,8 +67,7 @@ body {
 
 .play-item {
   position: relative;
-  padding: 5px;
-  padding-left: 20px;
+  padding: 5px 5px 10px 30px;
   list-style: none;
   opacity: var(--basic-opacity);
   cursor: pointer;
@@ -80,15 +79,28 @@ body {
 }
 
 .play-item::before {
-  content: '\2713';
+  /* content: '\2713'; */
+  content: '';
+  width: 22px;
+  height: 22px;
   position: absolute;
   left: 0;
   top: 2px;
-  font-weight: 900;
+  /* font-weight: 900; */
+  background-image: url('../assets/svg/play.svg');
+  background-size: contain;
+  cursor: pointer;
+}
+
+.pause-item::before {
+  content: '';
+  background-image: url('../assets/svg/pause.svg');
 }
 
 .item-active::before {
-  color: var(--active-color);
+  /* color: var(--active-color); */
+  filter: invert(61%) sepia(96%) saturate(338%) hue-rotate(13deg)
+    brightness(101%) contrast(87%);
 }
 
 .player-icon,

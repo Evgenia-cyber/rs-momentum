@@ -17,7 +17,10 @@ const audio = new Audio();
 /* ***************** */
 function playAudio() {
   const allPlayListLI = document.querySelectorAll('.play-item');
-  allPlayListLI.forEach((li) => li.classList.remove('item-active'));
+  allPlayListLI.forEach((li) => {
+    li.classList.remove('item-active');
+    li.classList.remove('pause-item');
+  });
   allPlayListLI[currentSongIndex].classList.add('item-active');
 
   audio.src = playList[currentSongIndex].src;
@@ -25,10 +28,12 @@ function playAudio() {
   if (!isPlay) {
     isPlay = true;
     playBtn.classList.add('pause');
+    allPlayListLI[currentSongIndex].classList.add('pause-item');
     audio.play(); // запускаем проигрывание звука
   } else {
     isPlay = false;
     playBtn.classList.remove('pause');
+    allPlayListLI[currentSongIndex].classList.remove('pause-item');
     audio.pause(); // останавливаем проигрывание звука
   }
 }
@@ -53,11 +58,26 @@ function playPrevAudio() {
   playAudio();
 }
 
+function handlerOnLiClick(index, element) {
+  currentSongIndex = index;
+  if (element.classList.contains('pause-item')) {
+    element.classList.remove('pause-item');
+    isPlay = true;
+  } else {
+    isPlay = false;
+  }
+
+  playAudio();
+}
+
 function createPlayList() {
-  playList.forEach((song) => {
+  playList.forEach((song, index) => {
     const li = document.createElement('li');
     li.classList.add('play-item');
     li.textContent = song.title.en;
+    li.addEventListener('click', function () {
+      handlerOnLiClick(index, this);
+    });
     playListUL.append(li);
   });
 }
