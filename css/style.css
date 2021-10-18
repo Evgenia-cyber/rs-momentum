@@ -97,6 +97,13 @@ body {
   background-image: url('../assets/svg/pause.svg');
 }
 
+.play-item:active::before,
+.pause-item:active::before {
+  border: 0;
+  outline: 0;
+  transform: var(--transform-active-icon);
+}
+
 .item-active::before {
   /* color: var(--active-color); */
   filter: invert(61%) sepia(96%) saturate(338%) hue-rotate(13deg)
