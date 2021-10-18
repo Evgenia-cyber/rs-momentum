@@ -150,3 +150,6 @@ playPrevBtn.addEventListener('click', playPrevAudio);
 
 audio.addEventListener('timeupdate', updateProgressAudio);
 progressAudio.addEventListener('input', updateProgressAndAudioOnRewind);
+
+// когда заканчивается текущее audio, автоматически начинается следующее
+audio.addEventListener('ended', playNextAudio);
