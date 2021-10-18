@@ -7,10 +7,10 @@ const playNextBtn = document.querySelector('.play-next');
 const playPrevBtn = document.querySelector('.play-prev');
 const playListUL = document.querySelector('.play-list');
 const progressAudio = document.querySelector('.progress-audio');
-const progressVolume = document.querySelector('.progress-volume');
 const currentTimeSpan = document.querySelector('.timer-current-time');
 const durationSpan = document.querySelector('.timer-duration-time');
 const currentSongEl = document.querySelector('.current-song');
+const progressVolume = document.querySelector('.progress-volume');
 const volumeBtn = document.querySelector('.volume');
 
 /* ***************** */
@@ -141,6 +141,34 @@ function updateProgressAndAudioOnRewind() {
   }
 }
 
+function toggleVolume() {
+  if (audio.muted) {
+    audio.muted = false;
+    volumeBtn.classList.replace('mute', 'volume');
+    progressVolume.value = DEFAULT_VOLUME * MAX_PERCENT;
+    progressVolume.style.background = paintProgressBackground(
+      DEFAULT_VOLUME * MAX_PERCENT,
+    );
+  } else {
+    audio.muted = true;
+    volumeBtn.classList.replace('volume', 'mute');
+    progressVolume.value = MIN_VOLUME;
+    progressVolume.style.background = paintProgressBackground(MIN_VOLUME);
+  }
+}
+
+function updateProgressAndAudioVolume() {
+  const value = progressVolume.value;
+
+  progressVolume.style.background = paintProgressBackground(value);
+
+  audio.volume = value / MAX_PERCENT;
+  if (value === '0') {
+    volumeBtn.classList.replace('volume', 'mute');
+  } else {
+    volumeBtn.classList.replace('mute', 'volume');
+  }
+}
 /* ***************** */
 createPlayList();
 
@@ -150,6 +178,9 @@ playPrevBtn.addEventListener('click', playPrevAudio);
 
 audio.addEventListener('timeupdate', updateProgressAudio);
 progressAudio.addEventListener('input', updateProgressAndAudioOnRewind);
+
+volumeBtn.addEventListener('click', toggleVolume);
+progressVolume.addEventListener('input', updateProgressAndAudioVolume);
 
 // когда заканчивается текущее audio, автоматически начинается следующее
 audio.addEventListener('ended', playNextAudio);
