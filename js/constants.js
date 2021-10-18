@@ -10,6 +10,7 @@ const MORNING = 'morning';
 const DAY = 'day';
 const EVENING = 'evening';
 const NIGHT = 'night';
+const AFTERNOON = 'afternoon';
 
 const MIN_NUMBER_OF_IMAGE = 1;
 const MAX_NUMBER_OF_IMAGE = 20;
