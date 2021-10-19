@@ -76,6 +76,20 @@
         <span class="greeting"></span>
         <input class="name" type="text" placeholder="[Enter name]" />
       </div>
+      <div class="todo">
+        <button class="icon todo-btn"></button>
+        <div class="add-todo">
+          <input
+            class="add-todo-input"
+            type="text"
+            id="todoInput"
+            placeholder="Add todo..."
+          />
+          <button class="icon add-todo-btn"></button>
+        </div>
+        <p class="todo-error"></p>
+        <ul class="todo-list"></ul>
+      </div>
     </main>
     <!-- footer -->
     <footer class="footer">
@@ -97,6 +111,7 @@
     <script src="js/getWeather.js"></script>
     <script src="js/getQuote.js"></script>
     <script type="module" src="js/audioPlayer.js"></script>
+    <script src="js/todo.js"></script>
     <script src="js/saveDataInLocalStorage.js"></script>
     <script src="js/showData.js"></script>
   </body>
