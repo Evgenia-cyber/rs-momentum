@@ -12,8 +12,8 @@ function toggleCheckedForLI(event) {
 
 function deleteTodo() {
   const todoLI = this.parentElement;
-  todoLI.style.display = 'none';
-  this.style.display = 'none';
+  todoLI.removeChild(this);
+  todoLI.parentNode.removeChild(todoLI);
 }
 
 function createCloseBtn(parrentEl) {
@@ -24,14 +24,19 @@ function createCloseBtn(parrentEl) {
   parrentEl.appendChild(button);
 }
 
+function createLI(value, isChecked = false) {
+  const li = document.createElement('li');
+  li.classList.add('todo-item');
+  if (isChecked) li.classList.add('checked');
+  li.textContent = value;
+  createCloseBtn(li);
+  todoUL.appendChild(li);
+}
+
 function createNewTodo() {
   const newTodo = addTodoInput.value;
   addTodoInput.value = '';
-  const li = document.createElement('li');
-  li.classList.add('todo-item');
-  li.textContent = newTodo;
-  createCloseBtn(li);
-  todoUL.appendChild(li);
+  createLI(newTodo);
 }
 
 function toggleShowTodoList() {

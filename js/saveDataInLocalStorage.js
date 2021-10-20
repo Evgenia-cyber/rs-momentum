@@ -1,12 +1,19 @@
 const usernameInput = document.querySelector('.name');
 
 /* ************* */
-function setUsernameLocalStorage() {
+function setDataToLocalStorage() {
   localStorage.setItem('name', usernameInput.value);
   localStorage.setItem('city', cityInput.value);
+
+  const todosElements = document.querySelectorAll('.todo-item');
+  const todos = Array.from(todosElements).map((el) => ({
+    value: el.textContent,
+    isChecked: el.classList.contains('checked'),
+  }));
+  localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-function getUsernameLocalStorage() {
+function getDataFromLocalStorage() {
   if (localStorage.getItem('name')) {
     usernameInput.value = localStorage.getItem('name');
   }
@@ -14,9 +21,13 @@ function getUsernameLocalStorage() {
     cityInput.value = localStorage.getItem('city');
     // getWeather();
   }
+  if (localStorage.getItem('todos')) {
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    todos.forEach((todo) => createLI(todo.value, todo.isChecked));
+  }
 }
 
 /* ************* */
-window.addEventListener('beforeunload', setUsernameLocalStorage); // перед перезагрузкой или закрытием страницы (событие beforeunload) данные нужно сохранить
+window.addEventListener('beforeunload', setDataToLocalStorage); // перед перезагрузкой или закрытием страницы (событие beforeunload) данные нужно сохранить
 
-window.addEventListener('load', getUsernameLocalStorage); // перед загрузкой страницы (событие load) данные нужно восстановить и отобразить
+window.addEventListener('load', getDataFromLocalStorage); // перед загрузкой страницы (событие load) данные нужно восстановить и отобразить
