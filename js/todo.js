@@ -1,10 +1,10 @@
 const todoUL = document.querySelector('.todo-list');
 const addTodoInput = document.querySelector('.add-todo-input');
-const addTodoBtn = document.querySelector('.add-todo-btn');
-const todoErrorEl = document.querySelector('.todo-error');
+const todoBtn = document.querySelector('.todo-btn');
+const todoWrap = document.querySelector('.todo-wrap');
 
 /* **************** */
-function toogleCheckedForLI(event) {
+function toggleCheckedForLI(event) {
   if (event.target.tagName === 'LI') {
     event.target.classList.toggle('checked');
   }
@@ -27,17 +27,17 @@ function createCloseBtn(parrentEl) {
 function createNewTodo() {
   const newTodo = addTodoInput.value;
   addTodoInput.value = '';
-  if (!newTodo) {
-    todoErrorEl.textContent = 'Error: enter todo!';
-  } else {
-    todoErrorEl.textContent = '';
-    const li = document.createElement('li');
-    li.classList.add('todo-item');
-    li.textContent = newTodo;
-    createCloseBtn(li);
-    todoUL.appendChild(li);
-  }
+  const li = document.createElement('li');
+  li.classList.add('todo-item');
+  li.textContent = newTodo;
+  createCloseBtn(li);
+  todoUL.appendChild(li);
+}
+
+function toggleShowTodoList() {
+  todoWrap.classList.toggle('visible');
 }
 /* **************** */
-todoUL.addEventListener('click', toogleCheckedForLI);
-addTodoBtn.addEventListener('click', createNewTodo);
+todoUL.addEventListener('click', toggleCheckedForLI);
+addTodoInput.addEventListener('change', createNewTodo);
+todoBtn.addEventListener('click', toggleShowTodoList);

@@ -65,40 +65,46 @@
       <!-- /weather -->
     </header>
     <!-- /header -->
-    <main class="main">
-      <div class="slider-icons">
-        <button class="slide-prev slider-icon"></button>
-        <button class="slide-next slider-icon"></button>
-      </div>
-      <time class="time"></time>
-      <date class="date"></date>
-      <div class="greeting-container">
-        <span class="greeting"></span>
-        <input class="name" type="text" placeholder="[Enter name]" />
-      </div>
-      <div class="todo">
-        <button class="icon todo-btn"></button>
-        <div class="add-todo">
-          <input
-            class="add-todo-input"
-            type="text"
-            id="todoInput"
-            placeholder="Add todo..."
-          />
-          <button class="icon add-todo-btn"></button>
+    <main>
+      <section class="main">
+        <div class="slider-icons">
+          <button class="slide-prev slider-icon"></button>
+          <button class="slide-next slider-icon"></button>
         </div>
-        <p class="todo-error"></p>
-        <ul class="todo-list"></ul>
-      </div>
+        <time class="time"></time>
+        <date class="date"></date>
+        <div class="greeting-container">
+          <span class="greeting"></span>
+          <input class="name" type="text" placeholder="[Enter name]" />
+        </div>
+      </section>
+      <!-- quote -->
+      <section class="quote-wrap">
+        <button class="change-quote"></button>
+        <div>
+          <div class="quote"></div>
+          <div class="author"></div>
+        </div>
+      </section>
+      <!-- /quote -->
+      <!-- todo -->
+      <section class="todo">
+        <button class="icon todo-btn"></button>
+        <div class="todo-wrap">
+          <div class="add-todo">
+            <input
+              class="add-todo-input"
+              type="text"
+              id="todoInput"
+              placeholder="Enter todo..."
+            />
+          </div>
+          <ul class="todo-list"></ul>
+        </div>
+      </section>
+      <!-- /todo -->
     </main>
     <!-- footer -->
-    <footer class="footer">
-      <button class="change-quote"></button>
-      <div>
-        <div class="quote"></div>
-        <div class="author"></div>
-      </div>
-    </footer>
     <!-- /footer -->
 
     <!-- scripts -->

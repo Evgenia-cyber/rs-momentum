@@ -28,7 +28,6 @@
 }
 
 body {
-  width: 100vw;
   min-width: 320px;
   min-height: 100vh;
   font-family: 'Arial', sans-serif;
@@ -37,6 +36,7 @@ body {
   text-align: center;
   /* background: url('../assets/img/bg.jpg') no-repeat center/cover,
     rgba(0, 0, 0, 0.5); */
+  background-color: #000000;
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
 }
@@ -331,7 +331,6 @@ body {
   justify-content: stretch;
   align-items: center;
   min-height: 48px;
-  width: 100vw;
   font-size: 40px;
 }
 
@@ -357,49 +356,8 @@ body {
   opacity: 0.6;
 }
 
-/* ****** todo ******* */
-.todo-list {
-  text-align: left;
-}
-
-.todo-item{
-  padding-left: 15px;
-}
-
-.todo-item.checked {
-  text-decoration: line-through;
-}
-
-.todo-item.checked::before {
-  content: '\2713';
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-weight: 900;
-  color: var(--active-color);
-  cursor: pointer;
-}
-
-.todo-btn {
-  background-image: url('../assets/svg/todo.svg');
-}
-
-.add-todo-btn {
-  background-image: url('../assets/svg/add-task.svg');
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 15px;
-  height: 15px;
-  /* padding: 12px 16px 12px 16px; */
-  background-image: url('../assets/svg/close.svg');
-}
-
-/* ****** footer ******* */
-.footer {
+/* ****** quote ******* */
+.quote-wrap {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -421,6 +379,81 @@ body {
 
 .author {
   min-height: 20px;
+}
+
+/* ****** todo ******* */
+.todo {
+  position: relative;
+}
+
+.todo-wrap {
+  position: absolute;
+  right: 70px;
+  bottom: 20px;
+  background-color: #000000;
+  padding: 20px 15px 15px 20px;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.add-todo {
+  display: flex;
+  align-items: baseline;
+}
+
+.add-todo-input {
+  width: 250px;
+  background-color: transparent;
+  color: var(--white);
+  font-size: inherit;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.todo-list {
+  text-align: left;
+}
+
+.todo-item {
+  padding-left: 15px;
+}
+
+.todo-item.checked {
+  text-decoration: line-through;
+}
+
+.todo-item.checked::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-weight: 900;
+  color: var(--active-color);
+  cursor: pointer;
+}
+
+.todo-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-image: url('../assets/svg/todo.svg');
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background-image: url('../assets/svg/close.svg');
+}
+
+/* ******************** */
+.visible {
+  opacity: 1;
 }
 
 /* ******************** */
