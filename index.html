@@ -103,6 +103,132 @@
         </div>
       </section>
       <!-- /todo -->
+      <!-- settings -->
+      <section class="settings">
+        <button class="icon settings-btn"></button>
+        <ul class="settings-list">
+          <li class="settings-item lang">
+            Language:
+            <label class="settings-item-wrap lang-wrap"
+              >en
+              <input
+                class="hide-default-input"
+                type="radio"
+                checked="checked"
+                name="lang"
+                value="0" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap lang-wrap"
+              >ru
+              <input
+                class="hide-default-input"
+                type="radio"
+                name="lang"
+                value="1" /><span class="checkmark"></span
+            ></label>
+          </li>
+          <li class="settings-item image-src">
+            Image source:
+            <label class="settings-item-wrap"
+              >Github
+              <input
+                class="hide-default-input"
+                type="radio"
+                checked="checked"
+                name="image-src"
+                value="0" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap image-src-wrap"
+              >Unsplash
+              <input
+                class="hide-default-input"
+                type="radio"
+                name="image-src"
+                value="1"
+              /><span class="checkmark"></span>
+              <input class="input image-src-input" type="text" placeholder="Enter tag..." />
+            </label>
+            <label class="settings-item-wrap image-src-wrap"
+              >Flickr
+              <input
+                class="hide-default-input"
+                type="radio"
+                name="image-src"
+                value="2" /><span class=" checkmark checkmark-flickr"></span>
+              <input
+                class="input image-src-input"
+                type="text"
+                placeholder="Enter tag..." /></label>
+          </li>
+          <li class="settings-item show">
+            Show:
+            <label class="settings-item-wrap show-wrap"
+              >time
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="time"
+                value="0" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >date
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="date"
+                value="1" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >weather
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="weather"
+                value="2" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >audio
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="audio"
+                value="3" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >quotes
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="quotes"
+                value="4" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >todos
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="todos"
+                value="5" /><span class="checkmark"></span
+            ></label>
+            <label class="settings-item-wrap show-wrap"
+              >greeting
+              <input
+                class="hide-default-input"
+                type="checkbox"
+                checked="checked"
+                name="greeting"
+                value="6" /><span class="checkmark"></span
+            ></label>
+          </li>
+        </ul>
+      </section>
+      <!-- /settings -->
     </main>
     <!-- footer -->
     <!-- /footer -->
@@ -110,6 +236,7 @@
     <!-- scripts -->
     <script src="js/constants.js"></script>
     <script src="js/getRandomNum.js"></script>
+    <script src="js/settings.js"></script>
     <script src="js/setTime.js"></script>
     <script src="js/setDate.js"></script>
     <script src="js/setGreeting.js"></script>

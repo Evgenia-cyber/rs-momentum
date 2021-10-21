@@ -401,6 +401,7 @@ body {
   align-items: baseline;
 }
 
+.input,
 .add-todo-input {
   width: 250px;
   background-color: transparent;
@@ -449,6 +450,94 @@ body {
   width: 10px;
   height: 10px;
   background-image: url('../assets/svg/close.svg');
+}
+
+/* ****** settings ******* */
+.settings {
+  position: relative;
+}
+
+.settings-list {
+  position: absolute;
+  left: 70px;
+  bottom: 20px;
+  background-color: #000000;
+  padding: 20px 15px 15px 20px;
+  text-align: left;
+  list-style: none;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.settings-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-item-wrap {
+  position: relative;
+  padding-left: 15px;
+  padding-top: 15px;
+  user-select: none;
+  cursor: pointer;
+  opacity: var(--basic-opacity);
+  transition: opacity var(--transition-duration);
+}
+
+.settings-item-wrap:hover {
+  opacity: 1;
+}
+
+.image-src-wrap {
+  display: flex;
+}
+
+.lang-wrap:last-of-type {
+  padding-bottom: 15px;
+}
+
+.image-src-wrap:last-of-type {
+  padding-top: 0px;
+}
+
+.image-src-input {
+  width: 100%;
+  margin-left: 10px;
+  opacity: 0;
+}
+
+/* Hide the browser's default radio button */
+.settings-item-wrap input.hide-default-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.settings-item-wrap input.hide-default-input:checked ~ .checkmark::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-weight: 900;
+  color: var(--active-color);
+}
+
+.settings-item-wrap
+  input.hide-default-input:checked
+  ~ .checkmark.checkmark-flickr::before {
+  top: -5px;
+}
+
+.settings-item-wrap input.hide-default-input:checked ~ .image-src-input {
+  opacity: 1;
+}
+
+.settings-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-image: url('../assets/svg/settings.svg');
 }
 
 /* ******************** */

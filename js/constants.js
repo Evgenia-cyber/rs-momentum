@@ -23,4 +23,16 @@ const MAX_PERCENT = 100;
 const MIN_VOLUME = 0;
 const DEFAULT_VOLUME = 0.5;
 
+const GITHUB = 'github';
+const UNSPLASH = 'unsplash';
+const FLICKR = 'flickr';
+
+const TIME = 'time';
+const DATE = 'date';
+const GREETING = 'greeting';
+const QUOTE = 'quote';
+const WEATHER = 'weather';
+const AUDIO_PLAYER = 'audio';
+const TODOS = 'todos';
+
 const API_KEY_WEATHER = '09589742716eb0d2132c63686d8939fd';
