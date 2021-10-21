@@ -26,5 +26,7 @@ function getTimeOfDay(date) {
 
 function setGreeting(date) {
   const timeOfDay = getTimeOfDay(date);
-  greetingEl.textContent = `Good ${timeOfDay},`;
+  greetingEl.textContent = `${
+    greetingTranslate[timeOfDay][initState.language]
+  },`;
 }

@@ -29,7 +29,12 @@ function resetWeatherValue() {
 
 async function getWeather() {
   // Функция getWeather() не большая, не сложная. Единственное её неудобство - все полученные данные доступны исключительно внутри самой функции, получить их в основном коде невозможно. Асинхронные функции связаны с получением ответа от сервера и выполняются после того, как отработал весь код приложения. Это необходимо для того, чтобы весь код приложения не ждал пока асинхронная функция вернёт или не вернёт результат.
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&lang=en&appid=${API_KEY_WEATHER}&units=metric`;
+  const currentLang = initState.language;
+  const currentCity = cityInput.value
+    ? cityInput.value
+    : defaultData.defaultCity[currentLang];
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&lang=${initState.currentLang}&appid=${API_KEY_WEATHER}&units=metric`;
 
   const res = await fetch(url);
 
@@ -53,12 +58,19 @@ async function getWeather() {
 
 /* ******************* */
 function changeCityHandler() {
+  console.log(cityInput.value, 123);
+  // if (cityInput.value === '') {
+  //   weatherErrorEl.textContent = `Error: enter city`;
+  //   resetWeatherValue();
+  // } else {
+  //   getWeather();
+  // }
   if (cityInput.value === '') {
-    weatherErrorEl.textContent = `Error: enter city`;
-    resetWeatherValue();
-  } else {
-    getWeather();
+    //?????
+    cityInput.value = defaultData.defaultCity[initState.language];
+    console.log(cityInput.value);
   }
+  // getWeather();
 }
 
 /* ******************* */

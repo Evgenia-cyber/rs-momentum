@@ -16,7 +16,7 @@ const volumeBtn = document.querySelector('.volume');
 /* ***************** */
 let isPlay = false; // Когда мы только открываем страницу, звука нет.
 
-let currentSongIndex = 0;
+export let currentSongIndex = 0;
 
 const audio = new Audio();
 audio.src = playList[currentSongIndex].src;
@@ -39,7 +39,7 @@ function getFormattedTime(seconds) {
 
 /* ***************** */
 function playAudio() {
-  currentSongEl.textContent = playList[currentSongIndex].title.en;
+  currentSongEl.textContent = playList[currentSongIndex].title[initState.language];
   const allPlayListLI = document.querySelectorAll('.play-item');
   allPlayListLI.forEach((li) => {
     li.classList.remove('item-active');
@@ -104,7 +104,7 @@ function createPlayList() {
   playList.forEach((song, index) => {
     const li = document.createElement('li');
     li.classList.add('play-item');
-    li.textContent = song.title.en;
+    li.textContent = song.title[initState.language];
     li.addEventListener('click', function () {
       handlerOnLiClick(index, this);
     });

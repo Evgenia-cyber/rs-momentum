@@ -479,7 +479,6 @@ body {
   padding-left: 15px;
   padding-top: 15px;
   user-select: none;
-  cursor: pointer;
   opacity: var(--basic-opacity);
   transition: opacity var(--transition-duration);
 }
@@ -510,7 +509,6 @@ body {
 .settings-item-wrap input.hide-default-input {
   position: absolute;
   opacity: 0;
-  cursor: pointer;
 }
 
 /* Create a custom radio button */
@@ -543,6 +541,10 @@ body {
 /* ******************** */
 .visible {
   opacity: 1;
+}
+
+.visible .settings-item-wrap {
+  cursor: pointer;
 }
 
 /* ******************** */

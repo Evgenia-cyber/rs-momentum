@@ -6,11 +6,18 @@ const quoteTextEl = document.querySelector('.quote');
 const quoteAuthorEl = document.querySelector('.author');
 
 /* ***************** */
-async function getQuote() {
+async function fetchQuotes() {
   // Данные от JSON-файла получаем асинхронно.
   const quotesUrl = 'data/quotes.json';
   const res = await fetch(quotesUrl);
   const data = await res.json();
+  // console.log(data);
+
+  return data;
+}
+
+async function getQuote() {
+  const data = await fetchQuotes();
   // console.log(data);
 
   const quote = quoteTextEl.textContent;
@@ -23,8 +30,8 @@ async function getQuote() {
     randomQuote = data[randomQuoteIndex];
   } while (quote === randomQuote.text.en || quote === randomQuote.text.en);
 
-  quoteTextEl.textContent = randomQuote.text.en;
-  quoteAuthorEl.textContent = randomQuote.author.en;
+  quoteTextEl.textContent = randomQuote.text[initState.language];
+  quoteAuthorEl.textContent = randomQuote.author[initState.language];
 }
 
 /* ***************** */

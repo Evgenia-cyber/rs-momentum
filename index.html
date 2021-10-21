@@ -52,7 +52,11 @@
       <!-- /player -->
       <!-- weather -->
       <div class="weather">
-        <input type="text" class="city" value="Minsk" />
+        <input
+          type="text"
+          class="city"
+          placeholder="Enter city..."
+        />
         <i class="weather-icon owf"></i>
         <div class="weather-error"></div>
         <div class="description-container">
@@ -116,7 +120,7 @@
                 type="radio"
                 checked="checked"
                 name="lang"
-                value="0" /><span class="checkmark"></span
+                value="en" /><span class="checkmark"></span
             ></label>
             <label class="settings-item-wrap lang-wrap"
               >ru
@@ -124,7 +128,7 @@
                 class="hide-default-input"
                 type="radio"
                 name="lang"
-                value="1" /><span class="checkmark"></span
+                value="ru" /><span class="checkmark"></span
             ></label>
           </li>
           <li class="settings-item image-src">
@@ -146,7 +150,11 @@
                 name="image-src"
                 value="1"
               /><span class="checkmark"></span>
-              <input class="input image-src-input" type="text" placeholder="Enter tag..." />
+              <input
+                class="input image-src-input"
+                type="text"
+                placeholder="Enter tag..."
+              />
             </label>
             <label class="settings-item-wrap image-src-wrap"
               >Flickr
@@ -154,11 +162,12 @@
                 class="hide-default-input"
                 type="radio"
                 name="image-src"
-                value="2" /><span class=" checkmark checkmark-flickr"></span>
+                value="2" /><span class="checkmark checkmark-flickr"></span>
               <input
                 class="input image-src-input"
                 type="text"
-                placeholder="Enter tag..." /></label>
+                placeholder="Enter tag..."
+            /></label>
           </li>
           <li class="settings-item show">
             Show:
@@ -235,8 +244,11 @@
 
     <!-- scripts -->
     <script src="js/constants.js"></script>
+    <script src="data/defaultData.js"></script>
+    <script src="data/greeting.js"></script>
+    <script src="data/settings.js"></script>
     <script src="js/getRandomNum.js"></script>
-    <script src="js/settings.js"></script>
+    <script src="js/initSettings.js"></script>
     <script src="js/setTime.js"></script>
     <script src="js/setDate.js"></script>
     <script src="js/setGreeting.js"></script>
@@ -245,6 +257,8 @@
     <script src="js/getQuote.js"></script>
     <script type="module" src="js/audioPlayer.js"></script>
     <script src="js/todo.js"></script>
+    <script type="module" src="js/translate.js"></script>
+    <script type="module" src="js/changeSettings.js"></script>
     <script src="js/saveDataInLocalStorage.js"></script>
     <script src="js/showData.js"></script>
   </body>
