@@ -235,6 +235,10 @@ body {
   top: -20px;
 }
 
+.music-btn,
+.weather-btn {
+  display: none;
+}
 /* ****** weather ******* */
 .weather {
   display: flex;
@@ -572,44 +576,216 @@ body {
     opacity var(--transition-duration);
 }
 
+main {
+  position: relative;
+}
+
+.todo,
+.settings {
+  position: static;
+}
+
 /* ********* footer *********** */
-.footer{
+.footer {
   display: flex;
   justify-content: space-between;
   padding: 23px 20px 20px;
-  margin-top: 20px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.author{
-text-decoration: none;
-color: var(--white);
+.footer-author {
+  text-decoration: none;
+  color: var(--white);
+  opacity: 0.8;
+  transition: opacity var(--transition-duration);
 }
 
-.rs-school{
+.footer-author:hover {
+  opacity: 1;
+}
+
+.rs-school {
   width: 50px;
   height: auto;
-  background-color: rgb(255, 255, 255,0.7);
+  background-color: rgb(255, 255, 255, 0.7);
+  transition: background-color var(--transition-duration);
+}
+
+.rs-school:hover {
+  background-color: rgb(255, 255, 255, 1);
 }
 /* ******************** */
 /* ****** media ******* */
-@media (max-width: 768px) {
+@media (max-width: 1190px) {
+  .quote-wrap {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .author {
+    padding-top: 10px;
+  }
+  .change-quote {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .player-controls {
+    max-width: 440px;
+    flex-wrap: wrap;
+  }
+  .volume-player-control {
+    padding-top: 20px;
+  }
   .time {
     min-height: 80px;
     font-size: 72px;
   }
-
   .greeting-container {
     min-height: 40px;
     font-size: 32px;
   }
-
   .greeting {
     padding: 5px;
   }
-
   .name {
     font-size: 32px;
     padding: 5px;
+  }
+}
+
+@media (max-width: 780px) {
+  .player-controls {
+    max-width: 420px;
+  }
+  .timer-player-control {
+    padding-top: 20px;
+  }
+  .greeting-container {
+    font-size: 26px;
+  }
+  .name {
+    font-size: 26px;
+  }
+  .music-btn,
+  .weather-btn {
+    display: block;
+    position: absolute;
+    top: 20px;
+  }
+  .music-btn {
+    left: 20px;
+    background-image: url(../assets/svg/player.svg);
+  }
+  .weather-btn {
+    right: 20px;
+    background-image: url(../assets/svg/weather.svg);
+  }
+  .visible.weather,
+  .visible.player {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility var(--transition-duration),
+      opacity var(--transition-duration);
+  }
+  .invisible.weather,
+  .invisible.player {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility var(--transition-duration),
+      opacity var(--transition-duration);
+  }
+
+  .weather,
+  .player {
+    position: absolute;
+    top: 20px;
+    background-color: #000000;
+    padding: 20px 15px 15px 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility var(--transition-duration),
+      opacity var(--transition-duration);
+  }
+  .weather {
+    right: 70px;
+    z-index: 1;
+  }
+  .player {
+    left: 70px;
+    z-index: 1;
+  }
+  .settings-list,
+  .todo-wrap {
+    z-index: 1;
+  }
+  .quote-wrap {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 545px) {
+  main {
+    min-height: calc(100vh - 9vh);
+  }
+  .header {
+    height: auto;
+    min-height: 0;
+  }
+  .player {
+    display: none;
+    max-width: 310px;
+    top: 70px;
+    left: 20px;
+  }
+  .weather {
+    display: none;
+  }
+  .player-controls {
+    width: 250px;
+  }
+  .progress-audio {
+    width: 150px;
+  }
+  .todo-wrap {
+    max-width: 310px;
+    bottom: 70px;
+    right: 20px;
+  }
+  .add-todo-input {
+    width: 235px;
+  }
+  .settings-list {
+    max-width: 280px;
+    bottom: 70px;
+    left: 20px;
+  }
+  .show {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .show-wrap {
+    flex-basis: 45%;
+  }
+  .show-wrap:first-child {
+    flex-basis: 100%;
+  }
+  .time {
+    margin-top: 20px;
+    font-size: 36px;
+  }
+  .date {
+    width: 50%;
+    font-size: 18px;
+  }
+  .greeting-container {
+    font-size: 18px;
+  }
+  .greeting-container input {
+    font-size: 18px;
+  }
+  .quote-wrap {
+    height: auto;
   }
 }

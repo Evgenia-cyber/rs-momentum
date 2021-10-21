@@ -12,6 +12,8 @@ const durationSpan = document.querySelector('.timer-duration-time');
 const currentSongEl = document.querySelector('.current-song');
 const progressVolume = document.querySelector('.progress-volume');
 const volumeBtn = document.querySelector('.volume');
+const musicBtn = document.querySelector('.music-btn');
+const playerEl = document.querySelector('.player');
 
 /* ***************** */
 let isPlay = false; // Когда мы только открываем страницу, звука нет.
@@ -39,7 +41,8 @@ function getFormattedTime(seconds) {
 
 /* ***************** */
 function playAudio() {
-  currentSongEl.textContent = playList[currentSongIndex].title[initState.language];
+  currentSongEl.textContent =
+    playList[currentSongIndex].title[initState.language];
   const allPlayListLI = document.querySelectorAll('.play-item');
   allPlayListLI.forEach((li) => {
     li.classList.remove('item-active');
@@ -169,6 +172,10 @@ function updateProgressAndAudioVolume() {
     volumeBtn.classList.replace('mute', 'volume');
   }
 }
+
+function togglePlayerVisibleOnMobile() {
+  playerEl.classList.toggle('visible');
+}
 /* ***************** */
 createPlayList();
 
@@ -184,3 +191,4 @@ progressVolume.addEventListener('input', updateProgressAndAudioVolume);
 
 // когда заканчивается текущее audio, автоматически начинается следующее
 audio.addEventListener('ended', playNextAudio);
+musicBtn.addEventListener('click', togglePlayerVisibleOnMobile);

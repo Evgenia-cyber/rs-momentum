@@ -17,6 +17,8 @@ const windEl = document.querySelector('.wind');
 const humidityEl = document.querySelector('.humidity');
 const cityInput = document.querySelector('.city');
 const weatherErrorEl = document.querySelector('.weather-error');
+const weatherBtn = document.querySelector('.weather-btn');
+const weatherEl = document.querySelector('.weather');
 
 /* ******************* */
 function resetWeatherValue() {
@@ -73,8 +75,13 @@ function changeCityHandler() {
   // getWeather();
 }
 
+function toggleWeatherVisibleOnMobile() {
+  weatherEl.classList.toggle('visible');
+}
+
 /* ******************* */
 // getWeather();
 
 // Когда пользователь ввёл название города в предназначенный для этого input с классом city нам необходимо получить информацию о том, какой город он указал. Для этого находим соответствующий элемент и назначаем ему слушатель события change, который сработает если пользователь нажмёт клавишу Enter или фокус уйдёт из поля input. Когда на input произойдёт событие change, вызываем функцию getWeather(), изменив в ней url
 cityInput.addEventListener('change', changeCityHandler);
+weatherBtn.addEventListener('click', toggleWeatherVisibleOnMobile);
