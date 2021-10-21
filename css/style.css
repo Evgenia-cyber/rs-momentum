@@ -561,6 +561,17 @@ body {
   cursor: pointer;
 }
 
+.time,
+.date,
+.greeting-container,
+.quote-wrap,
+.weather,
+.player,
+.todo {
+  transition: visibility var(--transition-duration),
+    opacity var(--transition-duration);
+}
+
 /* ******************** */
 /* ****** media ******* */
 @media (max-width: 768px) {

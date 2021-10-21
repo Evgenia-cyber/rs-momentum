@@ -1,7 +1,7 @@
 const initState = {
   language: EN,
   photoSource: GITHUB,
-  blocks: [TIME, DATE, GREETING, QUOTE, WEATHER, AUDIO_PLAYER, TODOS],
+  visibleBlocks: [TIME, DATE, GREETING, QUOTE, WEATHER, AUDIO_PLAYER, TODOS],
 };
 
 const settingsBtn = document.querySelector('.settings-btn');
