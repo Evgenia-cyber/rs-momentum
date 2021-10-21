@@ -81,6 +81,10 @@ body {
   user-select: none;
 }
 
+.play-item {
+  width: 170px;
+}
+
 .play-item:hover,
 .todo-item:hover {
   opacity: 1;
@@ -465,8 +469,6 @@ body {
   padding: 20px 15px 15px 20px;
   text-align: left;
   list-style: none;
-  opacity: 0;
-  transition: opacity 0.6s;
 }
 
 .settings-item {
@@ -503,6 +505,7 @@ body {
   width: 100%;
   margin-left: 10px;
   opacity: 0;
+  visibility: hidden;
 }
 
 /* Hide the browser's default radio button */
@@ -529,6 +532,7 @@ body {
 
 .settings-item-wrap input.hide-default-input:checked ~ .image-src-input {
   opacity: 1;
+  visibility: visible;
 }
 
 .settings-btn {
@@ -539,8 +543,18 @@ body {
 }
 
 /* ******************** */
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility var(--transition-duration),
+    opacity var(--transition-duration);
+}
+
 .visible {
+  visibility: visible;
   opacity: 1;
+  transition: visibility var(--transition-duration),
+    opacity var(--transition-duration);
 }
 
 .visible .settings-item-wrap {
