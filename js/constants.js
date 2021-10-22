@@ -36,3 +36,5 @@ const AUDIO_PLAYER = 'audio';
 const TODOS = 'todos';
 
 const API_KEY_WEATHER = '09589742716eb0d2132c63686d8939fd';
+const API_KEY_UNSPLASH = 'pwHk-fTcFs8SC4-GtVqfdAdskEXhw3_6VV5I_OnPFLw';
+const API_KEY_FLICKR = 'e792f14f40f9cd7234f74357c003da6e';
