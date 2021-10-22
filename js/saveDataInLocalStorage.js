@@ -54,7 +54,10 @@ function setBlocksVisibility(name, visible) {
 function setDataToLocalStorage() {
   localStorage.setItem('name', usernameInput.value);
 
-  localStorage.setItem('city', cityInput.value);
+  const city = cityInput.value
+    ? cityInput.value
+    : defaultData.defaultCity[initState.language];
+  localStorage.setItem('city', city);
 
   const todosElements = document.querySelectorAll('.todo-item');
   const todos = Array.from(todosElements).map((el) => ({
@@ -78,7 +81,7 @@ function getDataFromLocalStorage() {
 
   if (localStorage.getItem('city')) {
     cityInput.value = localStorage.getItem('city');
-    // getWeather();
+    getWeather();
   }
 
   if (localStorage.getItem('todos')) {
@@ -95,6 +98,9 @@ function getDataFromLocalStorage() {
   if (localStorage.getItem('settings')) {
     const settings = JSON.parse(localStorage.getItem('settings'));
     initState = settings;
+
+    // cityInput.value = localStorage.getItem('city');
+    // getWeather();
 
     langInputs.forEach((input) => {
       input.checked = false;

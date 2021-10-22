@@ -23,6 +23,11 @@ export function setLang() {
   translateAudioPlayList();
   translateCurrentSong();
   translateDefaultData();
+  const value = cityInput.value;
+  if (value === 'Minsk' || value === 'Минск') {
+    cityInput.value = defaultData.defaultCity[initState.language];
+  }
+  getWeather();
 }
 
 function changeLang() {

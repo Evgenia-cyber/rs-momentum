@@ -36,7 +36,7 @@ async function getWeather() {
     ? cityInput.value
     : defaultData.defaultCity[currentLang];
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&lang=${initState.currentLang}&appid=${API_KEY_WEATHER}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&lang=${currentLang}&appid=${API_KEY_WEATHER}&units=metric`;
 
   const res = await fetch(url);
 
@@ -50,29 +50,19 @@ async function getWeather() {
     weatherErrorEl.textContent = '';
     temperatureEl.textContent = `${data.main.temp}°C`;
     weatherDescriptionEl.textContent = data.weather[0].description;
-    windEl.textContent = `Wind speed: ${data.wind.speed} m/s`;
-    humidityEl.textContent = `Humidity: ${data.main.temp}%`;
+    windEl.textContent = `${defaultData.windSpeed[currentLang]}: ${data.wind.speed} ${defaultData.windSpeedUnits[currentLang]}`;
+    humidityEl.textContent = `${defaultData.humidity[currentLang]}: ${data.main.temp}%`;
   } else {
-    weatherErrorEl.textContent = `Error: ${data.message}`;
+    weatherErrorEl.textContent = `${defaultData.error[currentLang]}: ${data.message}`;
     resetWeatherValue();
   }
 }
 
 /* ******************* */
 function changeCityHandler() {
-  console.log(cityInput.value, 123);
-  // if (cityInput.value === '') {
-  //   weatherErrorEl.textContent = `Error: enter city`;
-  //   resetWeatherValue();
-  // } else {
-  //   getWeather();
-  // }
-  if (cityInput.value === '') {
-    //?????
-    cityInput.value = defaultData.defaultCity[initState.language];
-    console.log(cityInput.value);
-  }
-  // getWeather();
+  const value = cityInput.value;
+  cityInput.value = value ? value : defaultData.defaultCity[initState.language];
+  getWeather();
 }
 
 function toggleWeatherVisibleOnMobile() {
@@ -80,7 +70,7 @@ function toggleWeatherVisibleOnMobile() {
 }
 
 /* ******************* */
-// getWeather();
+getWeather();
 
 // Когда пользователь ввёл название города в предназначенный для этого input с классом city нам необходимо получить информацию о том, какой город он указал. Для этого находим соответствующий элемент и назначаем ему слушатель события change, который сработает если пользователь нажмёт клавишу Enter или фокус уйдёт из поля input. Когда на input произойдёт событие change, вызываем функцию getWeather(), изменив в ней url
 cityInput.addEventListener('change', changeCityHandler);

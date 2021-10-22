@@ -19,4 +19,20 @@ const defaultData = {
     ru: 'Минск',
     en: 'Minsk',
   },
+  windSpeed: {
+    ru: 'Скорость ветра',
+    en: 'Wind speed',
+  },
+  windSpeedUnits: {
+    ru: 'м/с',
+    en: 'm/s',
+  },
+  humidity: {
+    ru: 'Влажность',
+    en: 'Humidity',
+  },
+  error: {
+    ru: 'Ошибка',
+    en: 'Error',
+  },
 };
