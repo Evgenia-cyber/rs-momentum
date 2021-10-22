@@ -160,7 +160,7 @@ function toggleVolume() {
   }
 }
 
-function updateProgressAndAudioVolume() {
+export function updateProgressAndAudioVolume() {
   const value = progressVolume.value;
 
   progressVolume.style.background = paintProgressBackground(value);
