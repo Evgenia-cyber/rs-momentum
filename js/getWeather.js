@@ -20,6 +20,8 @@ const weatherErrorEl = document.querySelector('.weather-error');
 const weatherBtn = document.querySelector('.weather-btn');
 const weatherEl = document.querySelector('.weather');
 
+const value = cityInput.value;
+cityInput.value = value ? value : defaultData.defaultCity[initState.language];
 /* ******************* */
 function resetWeatherValue() {
   temperatureEl.textContent = '';
