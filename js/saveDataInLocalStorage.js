@@ -1,8 +1,49 @@
-import {
-  updateProgressAndAudioVolume
-} from './audioPlayer.js';
+import { updateProgressAndAudioVolume } from './audioPlayer.js';
+import { blockInputs } from './changeSettings.js';
 
 const usernameInput = document.querySelector('.name');
+
+/* ************* */
+function setElementVisibility(element, visible) {
+  visible
+    ? element.classList.remove('invisible')
+    : element.classList.add('invisible');
+}
+
+function setBlocksVisibility(name, visible) {
+  switch (name) {
+    case TIME:
+      setElementVisibility(document.querySelector('.time'), visible);
+      break;
+    case DATE:
+      setElementVisibility(document.querySelector('.date'), visible);
+      break;
+    case GREETING:
+      setElementVisibility(
+        document.querySelector('.greeting-container'),
+        visible,
+      );
+      break;
+    case QUOTE:
+      setElementVisibility(document.querySelector('.quote-wrap'), visible);
+      break;
+    case WEATHER:
+      setElementVisibility(document.querySelector('.weather'), visible);
+
+      setElementVisibility(weatherBtn, visible);
+      break;
+    case AUDIO_PLAYER:
+      setElementVisibility(document.querySelector('.player'), visible);
+
+      setElementVisibility(document.querySelector('.music-btn'), visible);
+      break;
+    case TODOS:
+      setElementVisibility(document.querySelector('.todo'), visible);
+      break;
+    default:
+      console.log(`Sorry, no this input ${expr}.`);
+  }
+}
 
 /* ************* */
 function setDataToLocalStorage() {
@@ -21,6 +62,8 @@ function setDataToLocalStorage() {
     'volume',
     document.querySelector('.progress-volume').value,
   );
+
+  localStorage.setItem('settings', JSON.stringify(initState));
 }
 
 function getDataFromLocalStorage() {
@@ -39,8 +82,25 @@ function getDataFromLocalStorage() {
   }
 
   if (localStorage.getItem('volume')) {
-    document.querySelector('.progress-volume').value = localStorage.getItem('volume');
+    document.querySelector('.progress-volume').value =
+      localStorage.getItem('volume');
     updateProgressAndAudioVolume();
+  }
+
+  if (localStorage.getItem('settings')) {
+    const settings = JSON.parse(localStorage.getItem('settings'));
+    initState = settings;
+
+    blockInputs.forEach((input) => {
+      input.checked = false;
+      const name = input.name;
+      if (initState.visibleBlocks.includes(name)) {
+        input.checked = 'checked';
+        setBlocksVisibility(name, true);
+      } else {
+        setBlocksVisibility(name, false);
+      }
+    });
   }
 }
 

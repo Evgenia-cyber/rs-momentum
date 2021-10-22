@@ -7,7 +7,7 @@ import {
 
 const langInputs = document.querySelectorAll('input[name="lang"]');
 
-const blockInputs = document.querySelectorAll('input[type="checkbox"]');
+export const blockInputs = document.querySelectorAll('input[type="checkbox"]');
 
 /* ******************** */
 
@@ -20,8 +20,8 @@ function changeLang() {
   translateDefaultData();
 }
 
-function changeBlocksVisibility() {
-  switch (this.name) {
+function changeBlocksVisibility(name) {
+  switch (name) {
     case TIME:
       document.querySelector('.time').classList.toggle('invisible');
       break;
@@ -52,9 +52,20 @@ function changeBlocksVisibility() {
   }
 }
 
+function changeBlocksVisibilityAndInitState() {
+  changeBlocksVisibility(this.name);
+
+  initState.visibleBlocks = Array.from(blockInputs).reduce((array, input) => {
+    if (input.checked) {
+      array.push(input.name);
+    }
+    return array;
+  }, []);
+}
+
 /* ******************** */
 
 langInputs.forEach((input) => input.addEventListener('change', changeLang));
 blockInputs.forEach((input) =>
-  input.addEventListener('change', changeBlocksVisibility),
+  input.addEventListener('change', changeBlocksVisibilityAndInitState),
 );
