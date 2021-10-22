@@ -48,10 +48,10 @@ async function getWeather() {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
 
     weatherErrorEl.textContent = '';
-    temperatureEl.textContent = `${data.main.temp}°C`;
+    temperatureEl.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDescriptionEl.textContent = data.weather[0].description;
-    windEl.textContent = `${defaultData.windSpeed[currentLang]}: ${data.wind.speed} ${defaultData.windSpeedUnits[currentLang]}`;
-    humidityEl.textContent = `${defaultData.humidity[currentLang]}: ${data.main.temp}%`;
+    windEl.textContent = `${defaultData.windSpeed[currentLang]}: ${Math.round(data.wind.speed)} ${defaultData.windSpeedUnits[currentLang]}`;
+    humidityEl.textContent = `${defaultData.humidity[currentLang]}: ${Math.round(data.main.humidity)}%`;
   } else {
     weatherErrorEl.textContent = `${defaultData.error[currentLang]}: ${data.message}`;
     resetWeatherValue();
