@@ -1,5 +1,10 @@
 import { updateProgressAndAudioVolume } from './audioPlayer.js';
-import { blockInputs, langInputs, setLang } from './changeSettings.js';
+import {
+  blockInputs,
+  langInputs,
+  setLang,
+  imageSourceInputs,
+} from './changeSettings.js';
 
 const usernameInput = document.querySelector('.name');
 
@@ -97,6 +102,20 @@ function getDataFromLocalStorage() {
       if (value === initState.language) {
         input.checked = 'checked';
         setLang();
+      }
+    });
+
+    imageSourceInputs.forEach((input) => {
+      input.checked = false;
+      const value = input.value;
+      const source = initState.photoSource.source;
+      if (value === source) {
+        input.checked = 'checked';
+        const tagInput = document.querySelector(`.${source}`);
+        if (tagInput) {
+          tagInput.value = initState.photoSource.tag;
+        }
+        setBg();
       }
     });
 

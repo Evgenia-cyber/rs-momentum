@@ -30,11 +30,11 @@ async function getLinkToImage(source, tag) {
     const res = await fetch(url);
     const data = await res.json();
     //  console.log(data.photos.photo[0].url_l);
-    return data.photos.photo[0].url_l;
+    return data.photos.photo[randomNum].url_l;
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => {
-    //     console.log(data.photos.photo[0].url_l);
+    //     console.log(data.photos.photo[randomNum].url_l);
     //   });
   }
 }
@@ -56,13 +56,11 @@ async function setBg() {
   const photoSource = initState.photoSource.source;
   const userTag = initState.photoSource.tag;
   const tag = userTag ? userTag : timeOfDay;
-  console.log(photoSource, tag);
 
   if (photoSource === GITHUB) {
     img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${tag}/${bgNumString}.jpg`;
   } else {
     img.src = await getLinkToImage(photoSource, tag);
-    console.log(photoSource,tag,img.src)
   }
 
   img.onload = () => {

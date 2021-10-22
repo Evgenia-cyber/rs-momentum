@@ -7,6 +7,12 @@ import {
 
 export const langInputs = document.querySelectorAll('input[name="lang"]');
 
+export const imageSourceInputs = document.querySelectorAll(
+  'input[name="image-src"]',
+);
+const unsplashInput = document.querySelector('.unsplash');
+const flickrInput = document.querySelector('.flickr');
+
 export const blockInputs = document.querySelectorAll('input[type="checkbox"]');
 
 /* ******************** */
@@ -67,9 +73,29 @@ function changeBlocksVisibilityAndInitState() {
   }, []);
 }
 
+function changeTag() {
+  initState.photoSource.tag = this.value;
+  setBg();
+}
+
+function changeImageSource() {
+  const source = this.value;
+  initState.photoSource.source = source;
+  const tagInput = document.querySelector(`.${source}`);
+  if (tagInput) {
+    initState.photoSource.tag = tagInput.value;
+  }
+  setBg();
+}
+
 /* ******************** */
 
 langInputs.forEach((input) => input.addEventListener('change', changeLang));
+imageSourceInputs.forEach((input) =>
+  input.addEventListener('change', changeImageSource),
+);
 blockInputs.forEach((input) =>
   input.addEventListener('change', changeBlocksVisibilityAndInitState),
 );
+unsplashInput.addEventListener('change', changeTag);
+flickrInput.addEventListener('change', changeTag);
