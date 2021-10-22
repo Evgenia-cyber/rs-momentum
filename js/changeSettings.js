@@ -5,19 +5,23 @@ import {
   translateDefaultData,
 } from './translate.js';
 
-const langInputs = document.querySelectorAll('input[name="lang"]');
+export const langInputs = document.querySelectorAll('input[name="lang"]');
 
 export const blockInputs = document.querySelectorAll('input[type="checkbox"]');
 
 /* ******************** */
 
-function changeLang() {
-  initState.language = this.value;
+export function setLang() {
   showData();
   translateQuote();
   translateAudioPlayList();
   translateCurrentSong();
   translateDefaultData();
+}
+
+function changeLang() {
+  initState.language = this.value;
+  setLang();
 }
 
 function changeBlocksVisibility(name) {
@@ -48,7 +52,7 @@ function changeBlocksVisibility(name) {
       document.querySelector('.todo').classList.toggle('invisible');
       break;
     default:
-      console.log(`Sorry, no this input ${expr}.`);
+      console.log(`Sorry, no this input ${name}.`);
   }
 }
 

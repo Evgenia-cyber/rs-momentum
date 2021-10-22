@@ -1,5 +1,5 @@
 import { updateProgressAndAudioVolume } from './audioPlayer.js';
-import { blockInputs } from './changeSettings.js';
+import { blockInputs, langInputs, setLang } from './changeSettings.js';
 
 const usernameInput = document.querySelector('.name');
 
@@ -41,7 +41,7 @@ function setBlocksVisibility(name, visible) {
       setElementVisibility(document.querySelector('.todo'), visible);
       break;
     default:
-      console.log(`Sorry, no this input ${expr}.`);
+      console.log(`Sorry, no this input ${name}.`);
   }
 }
 
@@ -90,6 +90,15 @@ function getDataFromLocalStorage() {
   if (localStorage.getItem('settings')) {
     const settings = JSON.parse(localStorage.getItem('settings'));
     initState = settings;
+
+    langInputs.forEach((input) => {
+      input.checked = false;
+      const value = input.value;
+      if (value === initState.language) {
+        input.checked = 'checked';
+        setLang();
+      }
+    });
 
     blockInputs.forEach((input) => {
       input.checked = false;
