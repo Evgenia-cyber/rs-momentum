@@ -86,6 +86,7 @@ function changeTag() {
 function changeImageSource() {
   const source = this.value;
   initState.photoSource.source = source;
+
   const tagInput = document.querySelector(`.${source}`);
   if (tagInput) {
     initState.photoSource.tag = tagInput.value;

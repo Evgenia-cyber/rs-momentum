@@ -2,7 +2,7 @@
 const playList = [
   {
     title: { en: 'Aqua Caelestis', ru: 'Небесная вода' },
-    src: '../assets/sounds/Aqua Caelestis.mp3',
+    src: 'https://evgenia-cyber.github.io/rs-momentum/assets/sounds/Aqua Caelestis.mp3',
     duration: '00:39',
   },
   {
