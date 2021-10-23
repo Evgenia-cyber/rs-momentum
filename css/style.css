@@ -516,6 +516,12 @@ body {
 .settings-item-wrap input.hide-default-input {
   position: absolute;
   opacity: 0;
+  width: 25%;
+  cursor: pointer;
+}
+
+.settings-item-wrap input.hide-default-input.github-src {
+  transform: translateX(-50px);
 }
 
 /* Create a custom radio button */
