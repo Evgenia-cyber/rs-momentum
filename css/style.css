@@ -661,6 +661,9 @@ main {
 }
 
 @media (max-width: 780px) {
+  .current-song {
+    top: 2px;
+  }
   .player-controls {
     max-width: 420px;
   }
